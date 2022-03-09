@@ -1,0 +1,34 @@
+{
+  "name": "InfluxDB",
+  "type": "flogo:activity",
+  "version": "0.0.1",
+  "title": "InfluxDB",
+  "description": "CRUD on influx",
+  "homepage": "https://github.com/shaliniGovindaNayak/flogo-workspace/activity/influxdb",
+  "input": [
+    {
+      "name": "Host",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name":"Schema",
+      "type":"string",
+      "required":true
+    },
+    {
+      "name":"Table",
+      "type":"string"
+    },
+    {
+       "name":"Value",
+       "type":"any"
+    }
+  ],
+  "output": [
+    {
+      "name": "Output",
+      "type": "string"
+    }
+  ]
+}
