@@ -1,4 +1,4 @@
-package influxdb
+package influxdbv2
 
 import (
 	"testing"

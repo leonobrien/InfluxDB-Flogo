@@ -1,34 +1,42 @@
-package influxdb
+package influxdbv2
 
 import (
 	"fmt"
 
 	"github.com/project-flogo/core/data/coerce"
-	//"github.com/spf13/cast"
 )
 
 type Input struct {
-	Host   string                 `md:"Host.required"`
-	Schema string                 `md:"Schema.required"`
-	Table  string                 `md:"Table"`
-	Value  map[string]interface{} `md:"Value"`
+	Host         string                 `md:"Host.required"`
+	Organisation string                 `md:"Organisation.required"`
+	Bucket       string                 `md:"Bucket.required"`
+	Token        string                 `md:"Token.required"`
+	Value        map[string]interface{} `md:"Value"`
+}
+
+type Output struct {
+	Output string `md:"Output"`
 }
 
 func (r *Input) FromMap(values map[string]interface{}) error {
 
 	Val1, _ := coerce.ToString(values["Host"])
 	r.Host = Val1
-	fmt.Println(values["Schema"])
-	Val2, _ := coerce.ToString(values["Schema"])
-	r.Schema = Val2
 
-	Val3, _ := coerce.ToString(values["Table"])
-	r.Table = Val3
+	fmt.Println(values["Organisation"])
+	Val2, _ := coerce.ToString(values["Organisation"])
+	r.Organisation = Val2
 
-	Val4, _ := coerce.ToObject(values["Value"])
+	Val3, _ := coerce.ToString(values["Bucket"])
+	r.Bucket = Val3
+
+	Val4, _ := coerce.ToString(values["Token"])
+	r.Token = Val4
+
+	Val5, _ := coerce.ToObject(values["Value"])
 	//Val4, _ := coerce.ToParams(values["values"])
-	r.Value = Val4
-	fmt.Println(Val4)
+	r.Value = Val5
+	fmt.Println(Val5)
 	fmt.Println(r.Value)
 
 	return nil
@@ -36,15 +44,12 @@ func (r *Input) FromMap(values map[string]interface{}) error {
 
 func (r *Input) ToMap() map[string]interface{} {
 	return map[string]interface{}{
-		"Host":   r.Host,
-		"Schema": r.Schema,
-		"Table":  r.Table,
-		"Value":  r.Value,
+		"Host":         r.Host,
+		"Organisation": r.Organisation,
+		"Table":        r.Bucket,
+		"Token":        r.Token,
+		"Value":        r.Value,
 	}
-}
-
-type Output struct {
-	Output string `md:"Output"`
 }
 
 func (o *Output) FromMap(values map[string]interface{}) error {
