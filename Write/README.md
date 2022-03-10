@@ -5,11 +5,11 @@ This activity provides your Flogo app the ability to insert data on InfluxDB
 ## Installation
 
 ```bash
-flogo install github.com/shaliniGovindaNayak/flogo-workspace/activity/influxdb
+flogo install github.com/leonobrien/InfluxDB-Flogo/Write
 ```
 Link for flogo web:
 ```
-github.com/shaliniGovindaNayak/flogo-workspace/activity/influxdb
+github.com/leonobrien/InfluxDB-Flogo/Write
 ```
 
 ## Schema
@@ -17,23 +17,29 @@ Inputs and Outputs:
 
 ```json
 "inputs":[
-    {
+{
       "name": "Host",
       "type": "string",
       "required": true
     },
     {
-      "name":"Schema",
+      "name":"Organisation",
       "type":"string",
       "required":true
     },
     {
-      "name":"Table",
-      "type":"string"
+      "name":"Bucket",
+      "type":"string",
+      "required":true
+    },
+    {
+       "name":"Token",
+       "type":"any",
+       "required":true
     },
     {
        "name":"Value",
-       "type":"any"
+       "type":"string"
     }
   ]
 ```
@@ -41,8 +47,9 @@ Inputs and Outputs:
 | Input                          | Description    |
 |:-------------------------------|:---------------|
 | Host                           | Host name along with port where influxDB is running.           |
-| Schema                         | Schema(database name) that You want to use   |
-| Table                          | Table that needs to be inserted        |
+| Organisation                   | InfluxDB 2 Cloud Organisation you are connecting to   |
+| Bucket                         | Name of the bucket to use        |
+| Token                          | API Security token to use         |
 | Value                          | Data that needs to be inserted |
 
 
