@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	_ "github.com/influxdata/influxdb-client-go"
 	influxdb2 "github.com/influxdata/influxdb-client-go"
 
 	"github.com/project-flogo/core/activity"
