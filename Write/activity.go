@@ -1,11 +1,6 @@
-package influxdb
+package influxdbv2
 
 import (
-	"fmt"
-	"time"
-
-	_ "github.com/influxdata/influxdb1-client" // this is important because of the bug in go mod
-	client "github.com/influxdata/influxdb1-client/v2"
 	"github.com/project-flogo/core/activity"
 )
 
@@ -41,39 +36,41 @@ func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 	if err != nil {
 		return true, err
 	}
+	//TODO - InfluxDB v2 code for using the influx library.
 	//fmt.Println(input.Value)
 
-	c, err := client.NewHTTPClient(client.HTTPConfig{
-		Addr: input.Host,
-	})
+	/*
+		c, err := client.NewHTTPClient(client.HTTPConfig{
+			Addr: input.Host,
+		})
 
-	if err != nil {
-		fmt.Println("Error creating InfluxDB Client: ", err.Error())
-	}
-	defer c.Close()
+		if err != nil {
+			fmt.Println("Error creating InfluxDB Client: ", err.Error())
+		}
+		defer c.Close()
 
-	// Create a new point batch
-	bp, _ := client.NewBatchPoints(client.BatchPointsConfig{
-		Database:  input.Schema,
-		Precision: "s",
-	})
+		// Create a new point batch
+		bp, _ := client.NewBatchPoints(client.BatchPointsConfig{
+			Database:  input.Schema,
+			Precision: "s",
+		})
 
-	// Create a point and add to batch
-	tags := map[string]string{}
-	fields := input.Value
-	pt, err := client.NewPoint(input.Table, tags, fields, time.Now())
-	if err != nil {
-		fmt.Println("Error: ", err.Error())
-	}
+		// Create a point and add to batch
+		tags := map[string]string{}
+		fields := input.Value
+		pt, err := client.NewPoint(input.Table, tags, fields, time.Now())
+		if err != nil {
+			fmt.Println("Error: ", err.Error())
+		}
 
-	bp.AddPoint(pt)
+		bp.AddPoint(pt)
 
-	// Write the batch
-	err = c.Write(bp)
-	if err != nil {
-		fmt.Println(err)
-	}
-
+		// Write the batch
+		err = c.Write(bp)
+		if err != nil {
+			fmt.Println(err)
+		}
+	*/
 	output := &Output{Output: "ok"}
 	err = ctx.SetOutputObject(output)
 	if err != nil {
