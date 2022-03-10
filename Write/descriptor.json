@@ -23,9 +23,14 @@
     },
     {
        "name":"Token",
-       "type":"any",
+       "type":"String",
        "required":true
     },
+    {
+      "name":"Measurement",
+      "type":"string",
+      "required":true
+   },    
     {
        "name":"Value",
        "type":"string"
