@@ -11,6 +11,7 @@ type Input struct {
 	Organisation string                 `md:"Organisation.required"`
 	Bucket       string                 `md:"Bucket.required"`
 	Token        string                 `md:"Token.required"`
+	Measurement  string                 `md:"Measurement.required"`
 	Value        map[string]interface{} `md:"Value"`
 }
 
@@ -33,6 +34,9 @@ func (r *Input) FromMap(values map[string]interface{}) error {
 	Val4, _ := coerce.ToString(values["Token"])
 	r.Token = Val4
 
+	Val6, _ := coerce.ToString(values["Measurement"])
+	r.Measurement = Val6
+
 	Val5, _ := coerce.ToObject(values["Value"])
 	//Val4, _ := coerce.ToParams(values["values"])
 	r.Value = Val5
@@ -48,6 +52,7 @@ func (r *Input) ToMap() map[string]interface{} {
 		"Organisation": r.Organisation,
 		"Table":        r.Bucket,
 		"Token":        r.Token,
+		"Measurement":  r.Measurement,
 		"Value":        r.Value,
 	}
 }
