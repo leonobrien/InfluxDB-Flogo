@@ -1,6 +1,11 @@
 package influxdbv2
 
 import (
+	"fmt"
+	"time"
+
+	influxdb2 "github.com/influxdata/influxdb-client-go"
+
 	"github.com/project-flogo/core/activity"
 )
 
@@ -37,6 +42,24 @@ func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 		return true, err
 	}
 	//TODO - InfluxDB v2 code for using the influx library.
+
+	fmt.Println("Initiating push to InfluxDB")
+
+	//initiate client
+	client := influxdb2.NewClient(input.Host, input.Token)
+	defer client.Close()
+
+	//create writeAPI object for Data Point writing.
+	writeAPI := client.WriteAPI(input.Organisation, input.Bucket)
+	//initiate point for measurement
+	point := influxdb2.NewPoint(input.Measurement,
+		map[string]string{"unit": "temperature"},
+		map[string]interface{}{"avg": 24.5, "max": 45},
+		time.Now())
+
+	writeAPI.WritePoint(point)
+	writeAPI.Flush()
+
 	//fmt.Println(input.Value)
 
 	/*
