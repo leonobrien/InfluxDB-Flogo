@@ -3,8 +3,8 @@
   "type": "flogo:activity",
   "version": "0.0.1",
   "title": "InfluxDB",
-  "description": "CRUD on influx",
-  "homepage": "https://github.com/shaliniGovindaNayak/flogo-workspace/activity/influxdb",
+  "description": "Write to InfluxDB v2. Based on ",
+  "homepage": "https://github.com/leonobrien/InfluxDB-Flogo/Write",
   "input": [
     {
       "name": "Host",
@@ -12,16 +12,16 @@
       "required": true
     },
     {
-      "name":"Schema",
+      "name":"Organisation",
       "type":"string",
       "required":true
     },
     {
-      "name":"Table",
+      "name":"Bucket",
       "type":"string"
     },
     {
-       "name":"Value",
+       "name":"Token",
        "type":"any"
     }
   ],
