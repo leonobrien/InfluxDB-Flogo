@@ -1,6 +1,8 @@
 
 # 	InfluxDB - Activity
-This activity provides your Flogo app the ability to insert data on InfluxDB
+This activity provides your Flogo app the ability to insert data on InfluxDB v2.0 Cloud
+
+This work is a derivative of that initial work at github.com/shaliniGovindaNayak
 
 ## Installation
 
