@@ -60,40 +60,6 @@ func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 	writeAPI.WritePoint(point)
 	writeAPI.Flush()
 
-	//fmt.Println(input.Value)
-
-	/*
-		c, err := client.NewHTTPClient(client.HTTPConfig{
-			Addr: input.Host,
-		})
-
-		if err != nil {
-			fmt.Println("Error creating InfluxDB Client: ", err.Error())
-		}
-		defer c.Close()
-
-		// Create a new point batch
-		bp, _ := client.NewBatchPoints(client.BatchPointsConfig{
-			Database:  input.Schema,
-			Precision: "s",
-		})
-
-		// Create a point and add to batch
-		tags := map[string]string{}
-		fields := input.Value
-		pt, err := client.NewPoint(input.Table, tags, fields, time.Now())
-		if err != nil {
-			fmt.Println("Error: ", err.Error())
-		}
-
-		bp.AddPoint(pt)
-
-		// Write the batch
-		err = c.Write(bp)
-		if err != nil {
-			fmt.Println(err)
-		}
-	*/
 	output := &Output{Output: "ok"}
 	err = ctx.SetOutputObject(output)
 	if err != nil {

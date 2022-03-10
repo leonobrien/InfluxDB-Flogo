@@ -25,6 +25,7 @@ func (r *Input) FromMap(values map[string]interface{}) error {
 	r.Host = Val1
 
 	fmt.Println(values["Organisation"])
+
 	Val2, _ := coerce.ToString(values["Organisation"])
 	r.Organisation = Val2
 
@@ -34,14 +35,11 @@ func (r *Input) FromMap(values map[string]interface{}) error {
 	Val4, _ := coerce.ToString(values["Token"])
 	r.Token = Val4
 
-	Val6, _ := coerce.ToString(values["Measurement"])
-	r.Measurement = Val6
+	Val5, _ := coerce.ToString(values["Measurement"])
+	r.Measurement = Val5
 
-	Val5, _ := coerce.ToObject(values["Value"])
-	//Val4, _ := coerce.ToParams(values["values"])
-	r.Value = Val5
-	fmt.Println(Val5)
-	fmt.Println(r.Value)
+	Val6, _ := coerce.ToObject(values["Value"])
+	r.Value = Val6
 
 	return nil
 }

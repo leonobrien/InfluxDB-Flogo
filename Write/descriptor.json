@@ -1,7 +1,7 @@
 {
   "name": "InfluxDBv2",
   "type": "flogo:activity",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "title": "InfluxDBv2",
   "description": "Write to InfluxDB v2. Based on the work at github.com/shaliniGovindaNayak ",
   "homepage": "https://github.com/leonobrien/InfluxDB-Flogo/Write",
